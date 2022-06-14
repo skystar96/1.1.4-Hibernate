@@ -6,6 +6,12 @@ import javax.persistence.Table;
 
 @Table
 public class User {
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     @Id
     private Long id;
 
@@ -19,7 +25,6 @@ public class User {
     private Byte age;
 
     public User() {
-
     }
 
     public User(String name, String lastName, Byte age) {
@@ -59,4 +64,5 @@ public class User {
     public void setAge(Byte age) {
         this.age = age;
     }
+
 }
