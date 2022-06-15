@@ -11,17 +11,17 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
     // Все исключения ловятся в классе Dao
 
-    private String name, lastName;
-    private byte age;
+    private String NAME, LASTNAME;
+    private byte AGE;
 
     public UserDaoJDBCImpl() {
 
     }
 
-    public void createUsersTable() {
+    public void createUsersTable() throws SQLException {
         try (Connection connect = Util.getConnection();
              Statement statement = connect.createStatement()){
-            statement.execute("CREATE TABLE `userstable` (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS userstable (\n" +
                     "  `id` BIGINT(18) NOT NULL AUTO_INCREMENT,\n" +
                     "  `name` VARCHAR(20) NOT NULL,\n" +
                     "  `lastName` VARCHAR(20) NULL,\n" +
@@ -29,23 +29,21 @@ public class UserDaoJDBCImpl implements UserDao {
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB\n" +
                     "DEFAULT CHARACTER SET = utf8");
-        } catch (SQLException ignore) {
         }
     }
 
-    public void dropUsersTable() {
+    public void dropUsersTable() throws SQLException {
         try (Connection connect = Util.getConnection();
              Statement statement = connect.createStatement()){
-            statement.execute("DROP TABLE `userstable`");
-        } catch (SQLException ignore) {
+            statement.execute("DROP TABLE IF EXISTS userstable");
         }
 
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
+        this.NAME = name;
+        this.LASTNAME = lastName;
+        this.AGE = age;
         try (Connection connect = Util.getConnection();
              PreparedStatement preparedStatement = connect.prepareStatement(
                      "INSERT INTO userstable(name, lastName, age) VALUES (?, ?, ?)")    ) {

@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class Util {
     private static String URL = "jdbc:mysql://localhost:3306/users";
-    private static String UserName = "root";
-    private static String Password = "root";
+    private static String USERNAME = "root";
+    private static String PASSWORD = "root";
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, UserName, Password);
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 }
 
