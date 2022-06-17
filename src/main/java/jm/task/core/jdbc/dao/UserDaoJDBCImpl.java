@@ -11,8 +11,8 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
     // Все исключения ловятся в классе Dao
 
-    private String NAME, LASTNAME;
-    private byte AGE;
+    private String name, lastName;
+    private byte age;
 
     public UserDaoJDBCImpl() {
 
@@ -41,9 +41,9 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        this.NAME = name;
-        this.LASTNAME = lastName;
-        this.AGE = age;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
         try (Connection connect = Util.getConnection();
              PreparedStatement preparedStatement = connect.prepareStatement(
                      "INSERT INTO userstable(name, lastName, age) VALUES (?, ?, ?)")    ) {

@@ -13,56 +13,56 @@ public class User {
     }
 
     @Id
-    private Long ID;
+    private Long id;
 
     @Column
-    private String NAME;
+    private String name;
 
     @Column
-    private String LASTNAME;
+    private String lastName;
 
     @Column
-    private Byte AGE;
+    private Byte age;
 
     public User() {
     }
 
     public User(String name, String lastName, Byte age) {
-        this.NAME = name;
-        this.LASTNAME = lastName;
-        this.AGE = age;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
     }
 
     public Long getId() {
-        return ID;
+        return id;
     }
 
     public void setId(Long id) {
-        this.ID = id;
+        this.id = id;
     }
 
     public String getName() {
-        return NAME;
+        return name;
     }
 
     public void setName(String name) {
-        this.NAME = name;
+        this.name = name;
     }
 
     public String getLastName() {
-        return LASTNAME;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.LASTNAME = lastName;
+        this.lastName = lastName;
     }
 
     public Byte getAge() {
-        return AGE;
+        return age;
     }
 
     public void setAge(Byte age) {
-        this.AGE = age;
+        this.age = age;
     }
 
 }
